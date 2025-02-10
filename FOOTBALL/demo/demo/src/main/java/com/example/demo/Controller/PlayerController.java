@@ -73,4 +73,10 @@ public class PlayerController {
         playerService.deletePlayer(name);
         return ResponseEntity.ok().build();
     }
+
+    @GetMapping("/test")
+    public ResponseEntity<String> testEndpoint() {
+        logger.info("Test endpoint called");
+        return ResponseEntity.ok("API is working!");
+    }
 }
