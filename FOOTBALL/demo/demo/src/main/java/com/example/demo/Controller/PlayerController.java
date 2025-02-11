@@ -31,12 +31,12 @@ public class PlayerController {
         return ResponseEntity.ok(players);
     }
 
-    @GetMapping("/team/{team}")  // Changed from "/api/team/{team}"
+    @GetMapping("/team/{team}")
     public ResponseEntity<List<Player>> getPlayersByTeam(@PathVariable String team) {
         List<Player> players = playerService.getPlayersByTeam(team);
         if (players.isEmpty()) {
             logger.info("GET /api/players/team/{} returned an empty list", team);
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.ok(players);  // Changed from notFound() to ok()
         }
         logger.info("GET /api/players/team/{} returned {} players", team, players.size());
         return ResponseEntity.ok(players);

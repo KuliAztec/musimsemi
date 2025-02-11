@@ -11,7 +11,7 @@ onMounted(() => {
   <div class="app-container">
     <nav>
       <router-link to="/">Lobby</router-link> |
-      <router-link to="/player-stats">Player Stats</router-link>
+      <router-link to="/position">Players by Position</router-link>
     </nav>
     <router-view />
   </div>

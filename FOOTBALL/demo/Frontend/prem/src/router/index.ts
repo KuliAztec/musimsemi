@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router';
 import Lobby from '../components/Lobby.vue';
 import PlayerStats from '../components/PlayerStats.vue';
+import PlayerByPosition from '../components/PlayerByPosition.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -9,14 +10,14 @@ const routes: Array<RouteRecordRaw> = [
     component: Lobby
   },
   {
-    path: '/player-stats',
+    path: '/team/:team',
     name: 'PlayerStats',
     component: PlayerStats
   },
   {
-    path: '/player-stats/:team',
-    name: 'PlayerStats',
-    component: PlayerStats
+    path: '/position',
+    name: 'PlayerByPosition',
+    component: PlayerByPosition
   }
 ];
 

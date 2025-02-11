@@ -27,34 +27,9 @@ const teams = ref([
 ])
 
 const handleTeamClick = (teamName: string) => {
-  router.push(`/player-stats/${teamName}`)
+  router.push(`/team/${teamName}`)
 }
 
-const getTeamId = (teamName: string) => {
-  switch (teamName) {
-    case 'Arsenal': return 1
-    case 'Aston Villa': return 2
-    case 'Bournemouth': return 127
-    case 'Brentford': return 130
-    case 'Brighton': return 36
-    case 'Chelsea': return 4
-    case 'Crystal Palace': return 6
-    case 'Everton': return 7
-    case 'Fulham': return 9
-    case 'Leeds United': return 10
-    case 'Leicester City': return 11
-    case 'Liverpool': return 12
-    case 'Manchester City': return 13
-    case 'Manchester United': return 14
-    case 'Newcastle United': return 23
-    case 'Nottingham Forest': return 17
-    case 'Southampton': return 20
-    case 'Tottenham Hotspur': return 21
-    case 'West Ham United': return 25
-    case 'Wolverhampton': return 38
-    default: return null
-  }
-}
 </script>
 
 <template>
@@ -74,11 +49,12 @@ const getTeamId = (teamName: string) => {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+  min-height: 100vh;
 }
 
 h1 {
   text-align: center;
-  color: #fff;
+  color: #00b4b8;
   margin-bottom: 2rem;
 }
 
@@ -92,9 +68,9 @@ h1 {
 .team-item {
   padding: 20px;
   text-align: center;
-  border: 1px solid #444;
+  border: 1px solid #333;
   border-radius: 8px;
-  background-color: #1a1a1a;
+  background-color: #1e1e1e;
   display: flex;
   flex-direction: column;
   align-items: center;
