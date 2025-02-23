@@ -1,6 +1,8 @@
 <template>
     <div class="player-stats-container">
         <h1>{{ team }} Players</h1>
+        
+        <button @click="$router.push(`/team/${team}/grid`)">View gridlike</button>
         <button @click="getPlayersByTeam">Refresh</button>
 
         <div v-if="loading">Loading...</div>

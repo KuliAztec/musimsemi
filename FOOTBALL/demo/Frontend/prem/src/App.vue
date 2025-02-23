@@ -12,6 +12,8 @@ onMounted(() => {
     <nav>
       <router-link to="/">Lobby</router-link> |
       <router-link to="/position">Players by Position</router-link>
+      <router-link to="/search">Players by Name</router-link>
+      <router-link to="/topstats">Top Players</router-link>
     </nav>
     <router-view />
   </div>

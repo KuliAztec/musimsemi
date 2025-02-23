@@ -27,7 +27,7 @@ const teams = ref([
 ])
 
 const handleTeamClick = (teamName: string) => {
-  router.push(`/team/${teamName}`)
+  router.push(`/team/${teamName}/grid`)
 }
 
 </script>

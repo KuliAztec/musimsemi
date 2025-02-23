@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-
 import org.springframework.stereotype.Service;
 
 import com.example.demo.Repository.PlayerRepository;
@@ -80,6 +79,42 @@ public class PlayerService {
             return null;
         }
     }
+
+    // Add the new method for retrieving top players sorted by a numeric field in descending order
+    public List<Player> getTopPlayers(int count, String sortBy) {
+        return playerRepository.findAll().stream()
+            .sorted((p1, p2) -> {
+                switch(sortBy) {
+                    case "age":
+                        return Integer.compare(p2.getAge(), p1.getAge());
+                    case "match_Played":
+                        return Integer.compare(p2.getMatch_Played(), p1.getMatch_Played());
+                    case "starts":
+                        return Integer.compare(p2.getStarts(), p1.getStarts());
+                    case "minutes":
+                        return Integer.compare(p2.getMinutes(), p1.getMinutes());
+                    case "goals":
+                        return Integer.compare(p2.getGoals(), p1.getGoals());
+                    case "assist":
+                        return Integer.compare(p2.getAssist(), p1.getAssist());
+                    case "penalties":
+                        return Integer.compare(p2.getPenalties(), p1.getPenalties());
+                    case "cardYellow":
+                        return Integer.compare(p2.getCardYellow(), p1.getCardYellow());
+                    case "cardRed":
+                        return Integer.compare(p2.getCardRed(), p1.getCardRed());
+                    case "xG":
+                        return Double.compare(p2.getxG(), p1.getxG());
+                    case "xAG":
+                        return Double.compare(p2.getxAG(), p1.getxAG());
+                    default:
+                        return 0;
+                }
+            })
+            .limit(count)
+            .collect(Collectors.toList());
+    }
+
     @Transactional
     public void deletePlayer(String name) {
         playerRepository.deleteByName(name);

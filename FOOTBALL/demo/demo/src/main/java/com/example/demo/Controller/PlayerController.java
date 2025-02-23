@@ -53,6 +53,13 @@ public class PlayerController {
         return ResponseEntity.ok(players);
     }
 
+    @GetMapping("/search/{keyword}")
+    public ResponseEntity<List<Player>> searchPlayers(@PathVariable String keyword) {
+        List<Player> players = playerService.searchPlayers(keyword);
+        logger.info("GET /api/players/search/{} returned {} players", keyword, players.size());
+        return ResponseEntity.ok(players);
+    }
+
     @PostMapping
     public ResponseEntity<Player> addPlayer(@RequestBody Player player) {
         Player savedPlayer = playerService.addPlayer(player);
@@ -78,5 +85,14 @@ public class PlayerController {
     public ResponseEntity<String> testEndpoint() {
         logger.info("Test endpoint called");
         return ResponseEntity.ok("API is working!");
+    }
+
+    @GetMapping("/top/{count}")
+    public ResponseEntity<List<Player>> getTopPlayers(
+        @PathVariable int count,
+        @RequestParam String sortBy) {
+        List<Player> players = playerService.getTopPlayers(count, sortBy);
+        logger.info("GET /api/players/top/{}?sortBy={} returned top players", count, sortBy);
+        return ResponseEntity.ok(players);
     }
 }
